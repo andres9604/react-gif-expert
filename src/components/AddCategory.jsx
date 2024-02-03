@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 //componente especializado para el input
 
@@ -13,6 +14,8 @@ export const AddCategory = ({ onNewCategory }) => {
 
   //expresion de funcion, cuando se envia el formulario
   const handleSubmitForm = (e) => {
+    console.log("ejecucion formulario ...");
+
     //cancelamos el envio del formulario
     e.preventDefault();
 
@@ -35,7 +38,7 @@ export const AddCategory = ({ onNewCategory }) => {
 
   //no es necesario usar un fragmento <> ya que el form es el elemento padre y encapsula todos los inputs
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={handleSubmitForm} aria-label="form">
       <input
         type="text"
         value={inputValue}
@@ -44,4 +47,8 @@ export const AddCategory = ({ onNewCategory }) => {
       />
     </form>
   );
+};
+
+AddCategory.propTypes = {
+  onNewCategory: PropTypes.func.isRequired,
 };
